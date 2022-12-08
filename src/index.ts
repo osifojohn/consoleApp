@@ -3,7 +3,7 @@ import prompt from "prompt-sync";
 let input = prompt();
 let userInput = input("Enter keyword> ");
 
-const commandInstructions = `Press "1" to save book by name, "2" to retrieve book by name`;
+const commandInstructions = `Press "1" to save book by name, "2" to retrieve book by name, "quit" to quit`;
 
 const handleUserInput = (userInput: string) => {
   const listOfBooks: { name: string; id: string }[] = [];

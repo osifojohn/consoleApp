@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 let input = (0, prompt_sync_1.default)();
 let userInput = input("Enter keyword> ");
-const commandInstructions = `Press "1" to save book by name, "2" to retrieve book by name`;
+const commandInstructions = `Press "1" to save book by name, "2" to retrieve book by name, "quit" to quit`;
 const handleUserInput = (userInput) => {
     const listOfBooks = [];
     const helper = (inputData) => {
