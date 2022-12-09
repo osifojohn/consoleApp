@@ -27,9 +27,14 @@ const handleUserInput = (userInput) => {
             handleHints(userInput);
         }
         function handleHints(userInput) {
-            console.log(commandInstructions);
-            userInput = input("Please re-enter  keyword> ");
-            helper(userInput);
+            if (inputData === "quit") {
+                return;
+            }
+            if (userInput === "hints") {
+                console.log(commandInstructions);
+                userInput = input("Please re-enter  keyword> ");
+                helper(userInput);
+            }
         }
         if (userInput === "1") {
             addBooksToList(userInput);
@@ -40,7 +45,12 @@ const handleUserInput = (userInput) => {
             if (userInput === "2") {
                 retrieveBooksFromList();
             }
-            if (userInput !== "2") {
+            if (typeof userInput === "string" && userInput.trim().length === 0) {
+                console.log("Empty book name cannot be added to list");
+                userInput = input("Enter book name and press enter> ");
+                helper(userInput);
+            }
+            else {
                 listOfBooks.push({ name: userInput, id: bookId });
                 helper(userInput);
             }
