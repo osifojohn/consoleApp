@@ -10,38 +10,24 @@ const commandInstructions = `Press "1" to save book by name, "2" to retrieve boo
 const handleUserInput = (userInput) => {
     const listOfBooks = [];
     const helper = (inputData) => {
-        if (inputData === "quit") {
+        if (userInput === "quit") {
             return;
         }
         if (userInput === "hints") {
-            handleHints(userInput);
-        }
-        function handleHints(userInput) {
-            if (userInput === "quit") {
-                return;
-            }
-            if (userInput === "1") {
-                addBooksToList(userInput);
-            }
-            else if (userInput === "2") {
-                retrieveBooksFromList();
-            }
-            else {
-                console.log(commandInstructions);
-                userInput = input("Please re-enter  keyword> ");
-                helper(userInput);
-            }
-        }
-        if (userInput !== "1" &&
-            userInput !== "Enter keyword> " &&
-            userInput !== "hints" &&
-            userInput !== "2") {
-            inValidCommand(userInput);
+            console.log(commandInstructions);
             userInput = input("Please re-enter  keyword> ");
             helper(userInput);
         }
-        function inValidCommand(userInput) {
-            console.log(`Unkown command "${userInput}": type 'hints' to see lists of supported commands`);
+        if (inputData !== "1" &&
+            inputData !== "Enter keyword> " &&
+            inputData !== "hints" &&
+            inputData !== "2") {
+            if (userInput !== "1") {
+                console.log(`Unkown command "${userInput}": type 'hints' to see lists of supported commands`);
+                userInput = input("Please re-enter  keyword> ");
+                helper(userInput);
+            }
+            helper(userInput);
         }
         if (userInput === "1") {
             addBooksToList(userInput);
@@ -72,6 +58,7 @@ const handleUserInput = (userInput) => {
             userInput = input("Enter  command> ");
             helper(userInput);
         }
+        helper(userInput);
     };
     helper(userInput);
 };
