@@ -52,7 +52,12 @@ const handleUserInput = (userInput) => {
             retrieveBooksFromList();
         }
         function retrieveBooksFromList() {
-            listOfBooks.length !== 0 && console.log(listOfBooks);
+            if (listOfBooks.length !== 0) {
+                const books = listOfBooks.map(function (item) {
+                    return item["name"];
+                });
+                console.log(...books);
+            }
             listOfBooks.length === 0 &&
                 console.log(`Your list is empty, please enter '1' to add books to list`);
             userInput = input("Enter  command> ");
